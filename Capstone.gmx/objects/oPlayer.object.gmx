@@ -8,35 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///initialize variables
-grav = 0.2;
-hsp = 0;
-vsp = 0;
-jumpspeed = 7;
-movespeed = 4;
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -54,20 +25,24 @@ movespeed = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///movement
-// image_angle = which direction the sprite is facing (which sprite where using?)
-//get input
-key_right = keyboard_check(ord('S'));
-key_left = -keyboard_check(ord('A'));
-key_jump = keyboard_check(ord('K'));
+            <string>/* Player Controls */
 
-//react to input
-move = key_right + key_left;
-hsp = move * movespeed;
-if (vsp &lt; 10)
- vsp += grav;
-if(place_meeting(x,y+1,oWall)){
- vsp = key_jump * -jumpspeed;
+playerWalkSpeed = 10;
+projectileSpeed = 6;
+carryingPro = false;
+alive = true;
+// image_angle = which direction the sprite is facing (which sprite where using?)
+
+if (keyboard_check(ord('A'))) {
+ x -= playerWalkSpeed;
+}
+
+if (keyboard_check(ord('S'))) {
+ x += playerWalkSpeed;
+}
+
+if (keyboard_check(ord('K'))) {
+ y -= playerWalkSpeed;
 }
 
 if (keyboard_check(ord('L'))) {
@@ -76,25 +51,6 @@ if (keyboard_check(ord('L'))) {
  myProjectile.speed = 20;
 }
 
-//horrizontal collision
-if(place_meeting(x + hsp,y,oWall)){
- while(!place_meeting(x+sign(hsp), y, oWall))
- {
-   x+=sign(hsp);
- }
- hsp = 0;
-}
-x += hsp;
- //vertical collision
-if(place_meeting(x ,y + vsp,oWall)){
- while(!place_meeting(x, y + sign(vsp), oWall))
- {
-   y+=sign(vsp);
- }
- vsp = 0;
-}
-
-y += vsp;
 /* Facing */
 
 
