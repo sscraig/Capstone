@@ -10,17 +10,31 @@
     <sprite>sprites\sWall</sprite>
     <sprite>sprites\sEnemy</sprite>
     <sprite>sprites\sProjectile</sprite>
+    <sprite>sprites\sprite4</sprite>
+    <sprite>sprites\sArrow</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_menu.gml</script>
+    <script>scripts\scr_level.gml</script>
+  </scripts>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
     <object>objects\oPlayer</object>
     <object>objects\oWall</object>
     <object>objects\oEnemy</object>
     <object>objects\oProjectile</object>
+    <object>objects\oMenu</object>
+    <object>objects\oLevelSelect</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rMenu</room>
+    <room>rooms\rLevel</room>
     <room>rooms\room0</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
